@@ -11,7 +11,7 @@ mpc:
   exp_q2: 2.75
 
 iteration:
-  max_iter: 500
+  max_iter: 10
   init_lamb: 20
   lamb_decay: 0.7 # original: 0.7
   lamb_amplify: 2.0
@@ -31,15 +31,15 @@ vehicle:
   stl_lim: 1.57
 
 initial_condition:
-  state: [0., 0., 5.0, 0.]
+  state: [0.0, 0.0, 5.0, 0.1]
 
 obstacle:
-  init_state: [5.0, 1.2, 3.0, 0.]
+  init_state: [10.0, 0.0, 2.0, 0.0]
   action_gt: [0., 0.] # constant velocity, no steering
-  wheelbase: 2.7
-  width: 1.5
-  length: 3.2
-  d_safe: 1.0 # safety buffer
+  wheelbase: 3.0
+  width: 1.0
+  length: 3.6
+  d_safe: 0.5 # safety buffer
 
 reference_trajectory:
   longit_ref: [0, 40.0]

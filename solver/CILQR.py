@@ -66,7 +66,9 @@ class CILQR:
     def get_nominal_traj(self, x0):
         # zero ctrl initialization
         nomi_u = np.zeros((self.nu, self.N))
+        ss_test_nomi_u = nomi_u.tolist()
         nomi_x = const_velo_prediction(x0, self.N, self.dt, self.wheelbase)
+        ss_test_nomi_x = nomi_x.tolist()
 
         return nomi_u, nomi_x
 

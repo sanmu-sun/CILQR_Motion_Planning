@@ -6,6 +6,12 @@ from utils import get_vehicle_front_and_rear_centers, get_ellipsoid_obstacle_sca
 import numpy as np
 import time
 
+def staticShow(test_opti_u, test_opti_x, ref_waypoints):
+    plt.figure()
+    plt.xlim(-5, 40)  # 设置x轴范围从0到6
+    plt.ylim(-15, 15)  # 设置y轴范围从0到12
+    plt.scatter(test_opti_x[0], test_opti_x[1])
+    plt.plot(ref_waypoints[0, :], ref_waypoints[1, :], c='lime', label='reference path', zorder=0)
 
 def create_vehicle_patches(ax, x, y, yaw, length, width, wheelbase):
     rect = patches.Rectangle((x - length / 2, y - width / 2), length, width, edgecolor='black', facecolor='none')

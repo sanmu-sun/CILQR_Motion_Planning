@@ -3,7 +3,8 @@ import time
 import yaml
 import utils
 from solver.CILQR import CILQR
-from animation import vis
+import animation
+import matplotlib.pyplot as plt
 
 
 def load_config(file_path):
@@ -42,7 +43,6 @@ def obstacle_pred_loader(config):
 
     return utils.const_velo_prediction(obstacle_state, N, dt, obstacle_whba)
 
-
 def main():
     config = load_config('config.yaml')
 
@@ -50,9 +50,13 @@ def main():
 
     ego_state = ego_state_loader(config)
     ref_waypoints = ref_waypoints_loader(config)
+    test_ref_waypoints = ref_waypoints.tolist()
     ref_velo = ref_velo_loader(config)
+    test_ref_velo = ref_velo.tolist()
     obstacle_attr = obstacle_attr_loader(config)
+    test_obstacle_attr = obstacle_attr.tolist()
     obstacle_pred = obstacle_pred_loader(config)
+    test_obstacle_pred = obstacle_pred.tolist()
 
     solver_start_t = time.process_time()
     opti_u, opti_x = planner.solve(ego_state,
@@ -62,8 +66,10 @@ def main():
                                    obstacle_pred
                                    )
     print('----CILQR Solution Time: {} seconds----'.format(time.process_time() - solver_start_t))
+    test_opti_u = opti_u.tolist()
+    test_opti_x = opti_x.tolist()
+    animation.staticShow(test_opti_u, test_opti_x, ref_waypoints)
+    animation.vis(config, ref_waypoints, obstacle_attr, obstacle_pred, opti_x)
 
-    vis(config, ref_waypoints, obstacle_attr, obstacle_pred, opti_x)
-
-
-main()
+if __name__ == "__main__":
+    main()

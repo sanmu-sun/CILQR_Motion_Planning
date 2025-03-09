@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "CILQR",
+            "type": "debugpy",
+            "request": "launch",
+            "python":"/usr/bin/python3",
+            // /home/sanmu/CILQR_Motion_Planning/test/ss_test_ilqr.py
+            // /home/sanmu/CILQR_Motion_Planning/run_demo.py
+            "program": "/home/sanmu/CILQR_Motion_Planning/run_demo.py",
+            "console": "integratedTerminal"
+        }
+    ]
+}
