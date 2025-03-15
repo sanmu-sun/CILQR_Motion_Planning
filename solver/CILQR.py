@@ -305,6 +305,7 @@ class CILQR:
 
         return new_u, new_x, new_J, iter_effective_flag
 
+    # x0:ego_state
     def solve(self, x0, ref_waypoints, ref_velo, obs_attr, obs_pred):
         nomi_u, nomi_x = self.get_nominal_traj(x0)
         J = self.get_total_cost(nomi_u, nomi_x, ref_waypoints, ref_velo, obs_attr, obs_pred)

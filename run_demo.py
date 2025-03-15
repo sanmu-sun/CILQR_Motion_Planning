@@ -49,6 +49,7 @@ def main():
     planner = CILQR(config)
 
     ego_state = ego_state_loader(config)
+    test_ego_state = ego_state.tolist();
     ref_waypoints = ref_waypoints_loader(config)
     test_ref_waypoints = ref_waypoints.tolist()
     ref_velo = ref_velo_loader(config)
