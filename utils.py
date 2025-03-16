@@ -13,6 +13,7 @@ def get_ref_waypoints(config):
 
 def const_velo_prediction(x0, N, dt, wheelbase):
     cur_u = np.zeros(2)
+    test_cur_u = cur_u.tolist()
 
     predicted_states = [x0]
     cur_x = x0

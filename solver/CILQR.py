@@ -137,6 +137,7 @@ class CILQR:
             np.full(self.N + 1, ref_velo),
             np.zeros(self.N + 1)
         ])
+        test_ref_states = ref_states.tolist()
 
         states_devt = np.sum(((x - ref_states).T @ self.state_weight) * (x - ref_states).T)
         ctrl_energy = np.sum((u.T @ self.ctrl_weight) * u.T)
@@ -312,6 +313,8 @@ class CILQR:
         u, x = nomi_u, nomi_x
 
         lamb = self.init_lamb
+        test_u = u.tolist()
+        test_x = x.tolist
 
         for itr in range(self.max_iter):
             new_u, new_x, new_J, iter_effective_flag = self.iter_step(
